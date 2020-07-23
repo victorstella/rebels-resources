@@ -13,12 +13,14 @@ class MemeGenContainer extends React.Component {
       border: '3px solid cyan',
       flexDirection: 'column',
       margin: '20px',
-      padding: '15px'
+      padding: '15px',
+      color: '#ffe81f',
+      backgroundColor: 'black'
     }
   }
 
   componentDidMount = () => {
-    axios.get("https://memegen.link/api/templates/")
+    axios.get("https://memegen.link/api/templates")
       .then(response => {
         this.setState({ memesTemplates: Object.values(response.data) })
       })
@@ -52,7 +54,7 @@ class MemeGenContainer extends React.Component {
   }
 
   setRandomTemplate = () => {
-    const randPosition = Math.floor( Math.random() * this.state.memesTemplates.length - 1 )
+    const randPosition = Math.floor( Math.random() * this.state.memesTemplates.length - 1 ) + 1
     const randTemplateUrl = this.state.memesTemplates[ randPosition ].slice(35)
     return `https://memegen.link/${ randTemplateUrl }/`
   }
@@ -89,10 +91,10 @@ class MemeGenContainer extends React.Component {
     const bottomTextToUri = finalBottomTextArr.join('')
     
     this.setState({
-      finalMeme:  <img 
-                    src={ `${ templateToGen }${ topTextToUri }/${ bottomTextToUri }.jpg` }
-                    alt="Your Meme"
-                  />
+      finalMeme:<img 
+          src={ `${ templateToGen }${ topTextToUri }/${ bottomTextToUri }.jpg` }
+          alt="Your Meme"
+        />
     })
     this.setState({ topText: '', bottomText: '' })
   }

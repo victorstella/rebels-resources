@@ -1,82 +1,75 @@
 import React from 'react'
 import './App.css'
-import Header from './components/Header/HeaderContainer.js'
-import LogInOut from './components/LogInOutComponent.js'
-import DayTime from './components/DayTimeComponent.js'
-import Inputs from './components/Inputs/InputsContainer'
-import MemeGen from './components/MemeGen/MemeGenContainer.js'
-import List from './components/List/ListContainer.js'
-import TheGreatQuestion from './components/TheGreatQuestion/TheGreatQuestionContainer.js'
+import Header from './components/HeaderComponent.js'
+import Home from './components/HomeComponent.js'
+import LoggedContainer from './components/LoggedContainer.js'
 import axios from 'axios'
 
 class App extends React.Component {
   state = {
-    serverResponse: '',
-    firstText: '',
-    secondText: '',
-    listOption: '',
-    isLogged: false
+    userData: null,
+    tempData:  null
   }
 
-  componentDidMount () {
-    const randChar = Math.floor( Math.random() * 81 ) + 1
-    axios.get(`https://swapi.dev/api/people/${randChar}`)
-      .then(res => {
-        this.setState({ serverResponse: res.data.name })
-      } )
-  }
-
-  logIn = () => {
-    this.setState(prevState => {
+  updateUserData = (event) => {
+    const id = event.target.id
+    const value = event.target.value
+    this.setState(prevSate => {
       return {
-        isLogged: !prevState.isLogged
+        tempData: {
+          ...prevSate.tempData,
+          [id]: value
+        }
       }
     })
   }
 
-  inputChange = (event) => {
-    const name = event.target.name
-    const value = event.target.value
-    this.setState({ [name]: value })
+  login = () => {
+    axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCS1ryzd6qsjNwL0koWEUpBjrsQ_zM8wRs', {
+      email: this.state.tempData.loginEmail,
+      password: this.state.tempData.loginPassword,
+      returnSecureToken: true
+    })
+    .then(response => {
+      this.setState({ userData: response.data })
+    })
+    setTimeout(() => {
+      this.eraseTempData()
+    }, 1500)
   }
 
-  listOptionChange = (event) => {
-    this.setState({ listOption: event.target.id })
+  signUp = () => {
+    axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCS1ryzd6qsjNwL0koWEUpBjrsQ_zM8wRs', {
+      email: this.state.tempData.email,
+      password: this.state.tempData.password,
+      returnSecureToken: true
+    })
+    .then(response => {
+      this.setState({ userData: response.data })
+    })
+    setTimeout(() => {
+      this.eraseTempData()
+    }, 1500)
+  }
+
+  eraseTempData = () => {
+    this.setState({ tempData: null })
   }
 
   render () {
-    let correctInput = `${ this.state.firstText }${ this.state.secondText }`
-    let showQuestion =  correctInput.includes('blondes') && 
-                        correctInput.includes('are') && 
-                        correctInput.includes('awesome') &&
-                        this.state.listOption.includes('blonde')
-
     return (
       <div className="App">
-        <Header 
-          logIn={ this.logIn }
-          isLogged={ this.state.isLogged }
+        <Header
+          updateUserData={ this.updateUserData }
+          login={ this.login }
+          signUp={ this.signUp }
+          eraseTempData={ this.eraseTempData }
         />
-        <LogInOut isLogged={ this.state.isLogged }/>
-        <DayTime serverRes={ this.state.serverResponse } />
-        <MemeGen />
-        <br />
-        <br />
-        <div className="d-flex flex-row">
-          <List 
-            listOption={ this.state.listOption }
-            listOptionChange={ this.listOptionChange }
-          />
-          <Inputs
-            inputChange={ this.inputChange }
-            firstText={ this.state.firstText }
-            secondText={ this.state.secondText }
-          />
+        <div className="mt-4 text-dark" hidden={ this.state.userData }>
+          <Home />
         </div>
-        <br />
-        <br />
-        <div hidden={ !showQuestion }>
-          <TheGreatQuestion />
+        <div hidden={ !this.state.userData }>
+          <LoggedContainer />
         </div>
       </div>
     )
