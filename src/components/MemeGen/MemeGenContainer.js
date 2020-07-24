@@ -89,13 +89,14 @@ class MemeGenContainer extends React.Component {
 
     const topTextToUri = finalTopTextArr.join('')
     const bottomTextToUri = finalBottomTextArr.join('')
-    
+
     this.setState({
-      finalMeme:<img 
-          src={ `${ templateToGen }${ topTextToUri }/${ bottomTextToUri }.jpg` }
-          alt="Your Meme"
-        />
+      finalMeme: <img
+        src={ `${ templateToGen }${ topTextToUri }/${ bottomTextToUri }.jpg` }
+        alt="Your Meme"
+      />
     })
+    
     this.setState({ topText: '', bottomText: '' })
   }
 

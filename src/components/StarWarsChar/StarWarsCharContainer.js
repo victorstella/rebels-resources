@@ -27,10 +27,26 @@ class StarWarsCharContainer extends React.Component {
           charKeys[i] = charKeys[i].charAt(0).toUpperCase() + charKeys[i].slice(1)
           charValues[i] = charValues[i].charAt(0).toUpperCase() + charValues[i].slice(1)
           this.setState(prevState => {
-            return {
-              SWChar: {
-                ...prevState.SWChar,
-                [i]: `${charKeys[i]}: ${charValues[i]}`
+            if (i === 1 && charValues[i] !== 'Unknown') {
+              return {
+                SWChar: {
+                  ...prevState.SWChar,
+                  [i]: `${charKeys[i]}: ${charValues[i]} cm`
+                }
+              }
+            } else if (i === 2 && charValues[i] !== 'Unknown') {
+              return {
+                SWChar: {
+                  ...prevState.SWChar,
+                  [i]: `${charKeys[i]}: ${charValues[i]} Kg`
+                }
+              }
+            } else {
+              return {
+                SWChar: {
+                  ...prevState.SWChar,
+                  [i]: `${charKeys[i]}: ${charValues[i]}`
+                }
               }
             }
           })

@@ -10,7 +10,7 @@ function StarWarsCharComponent (props) {
   });
   return (
     <div
-      className="col-6 pb-4 mx-auto"
+      className="col-6 pb-4 pt-0 mx-auto mt-1 mb-4"
       style={ props.state.SWStyle }
       onMouseEnter={ props.changeSWStyleEnter }
       onMouseLeave={ props.changeSWStyleLeave }
@@ -22,6 +22,7 @@ function StarWarsCharComponent (props) {
         height="auto"
         className="mx-auto"
       />
+      <hr className="mb-5" style={{ border: '1px solid white', width: '100%' }} />
       { char }
     </div>
   )

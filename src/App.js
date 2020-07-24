@@ -65,10 +65,10 @@ class App extends React.Component {
           signUp={ this.signUp }
           eraseTempData={ this.eraseTempData }
         />
-        <div className="mt-4 text-dark" hidden={ this.state.userData }>
+        <div className="mt-2 text-dark" hidden={ !this.state.userData }>
           <Home />
         </div>
-        <div hidden={ !this.state.userData }>
+        <div className="mt-2" hidden={ this.state.userData }>
           <LoggedContainer />
         </div>
       </div>

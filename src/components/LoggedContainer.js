@@ -10,8 +10,8 @@ class LoggedContainer extends React.Component {
   render () {
     return (
       <div className="d-flex flex-column">
-        <StarWarsChar />
         <MemeGen />
+        <StarWarsChar />
       </div>
     )
   }

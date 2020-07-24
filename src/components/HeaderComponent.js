@@ -2,12 +2,28 @@ import React from 'react'
 
 function HeaderComponent (props) {
   return (
-    <header className="header d-flex align-items-center px-3"><h3>Victor's Meme Generator</h3>
-      <button type="button" className="btn btn-secondary ml-auto" data-toggle="modal" data-target="#login">
-        Login
+    <header className="header d-flex align-items-center px-3">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Logo-jedi-order.png"
+        alt="Jedi"
+        height="100%"
+        width="auto"
+        className="my-auto mr-2"
+      />
+      <h3>Jedi Order's Meme Generator</h3>
+      <button
+        type="button"
+        className="btn btn-light ml-auto"
+        data-toggle="modal"
+        data-target="#login"
+      >Login
       </button>
-      <button type="button" className="btn btn-dark ml-3" data-toggle="modal" data-target="#signin">
-        Sign Up
+      <button
+        type="button"
+        className="btn btn-dark ml-3"
+        data-toggle="modal"
+        data-target="#signin"
+      >Sign Up
       </button>
 
       <div
@@ -19,7 +35,7 @@ function HeaderComponent (props) {
         aria-hidden="true"
       >
         <div className="modal-dialog d-flex justify-content-center" role="document">
-          <div className="modal-content col-10">
+          <div className="modal-content col-10" >
             <div className="modal-header">
               <h5 className="modal-title text-dark" id="exampleModalLabel">Login</h5>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -43,10 +59,10 @@ function HeaderComponent (props) {
               />
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" className="btn btn-dark" data-dismiss="modal">Cancel</button>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-info"
                 onClick={ props.login }
                 data-dismiss="modal">Enter
               </button>
@@ -97,13 +113,13 @@ function HeaderComponent (props) {
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-dark"
                 onClick={ props.eraseTempData }
                 data-dismiss="modal">Cancel
               </button>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-info"
                 onClick={ props.signUp }
                 data-dismiss="modal">Join
               </button>
