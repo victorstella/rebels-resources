@@ -1,4 +1,4 @@
-# Meme Generator
+# Rebel Alliance's Resources
 
 A React + TypeScript web app with two features: a meme generator powered by the [memegen.link](https://api.memegen.link) API, and a Star Wars character viewer/search powered by the [SWAPI](https://swapi.info) API.
 
