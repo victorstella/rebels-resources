@@ -22,14 +22,13 @@ A React + TypeScript web app with two features: a meme generator powered by the 
 
 ## Tech Stack
 
-| Layer       | Tool                                                                          |
-| ----------- | ----------------------------------------------------------------------------- |
-| UI Library  | [React 18](https://react.dev)                                                 |
-| Language    | [TypeScript](https://www.typescriptlang.org)                                  |
-| Build Tool  | [Vite 6](https://vitejs.dev)                                                  |
-| Styling     | [Tailwind CSS v4](https://tailwindcss.com)                                    |
-| HTTP Client | [Axios](https://axios-http.com)                                               |
-| Testing     | [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com) |
+| Layer       | Tool                                         |
+| ----------- | -------------------------------------------- |
+| UI Library  | [React 18](https://react.dev)                |
+| Language    | [TypeScript](https://www.typescriptlang.org) |
+| Build Tool  | [Vite 6](https://vitejs.dev)                 |
+| Styling     | [Tailwind CSS v4](https://tailwindcss.com)   |
+| HTTP Client | [Axios](https://axios-http.com)              |
 
 ---
 
