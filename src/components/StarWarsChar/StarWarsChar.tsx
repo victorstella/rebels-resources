@@ -33,9 +33,10 @@ export function StarWarsChar({
             value={SWCharSearch}
             placeholder="Search Characters"
             onChange={(e) => setSWCharSearch(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && searchChar()}
           />
           <button
-            className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 border border-cyan-700 rounded cursor-pointer"
+            className="w-22 bg-cyan-400 hover:bg-cyan-500 text-gray-800 font-bold py-2 px-4 border border-cyan-700 rounded cursor-pointer"
             onClick={searchChar}
           >
             Search

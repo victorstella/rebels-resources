@@ -33,6 +33,12 @@ export function MemeGen({
           value={topText}
           placeholder="Top Text"
           onChange={(e) => setTopText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              setLoading(true);
+              generateMeme();
+            }
+          }}
         />
         <input
           type="text"
@@ -41,9 +47,15 @@ export function MemeGen({
           value={bottomText}
           placeholder="Bottom Text"
           onChange={(e) => setBottomText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              setLoading(true);
+              generateMeme();
+            }
+          }}
         />
         <button
-          className="w-20 bg-teal-300 hover:bg-teal-400 text-gray-700 font-bold px-4 py-2 rounded mt-3 cursor-pointer transition-colors duration-150 justify-items-center"
+          className="w-20 bg-teal-400 hover:bg-teal-500 text-gray-800 font-bold px-4 py-2 rounded mt-3 cursor-pointer transition-colors duration-150 justify-items-center"
           onClick={() => {
             setLoading(true);
             generateMeme();
