@@ -23,6 +23,7 @@ export default function MemeGenContainer() {
   const [bottomText, setBottomText] = useState('');
   const [memesTemplates, setMemesTemplates] = useState<MemeTemplate[]>([]);
   const [finalMeme, setFinalMeme] = useState<ReactNode>('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios.get('https://api.memegen.link/templates').then((response) => {
@@ -36,25 +37,30 @@ export default function MemeGenContainer() {
     const randTemplateUrl = memesTemplates[randPosition].id;
     const templateUrl = `https://api.memegen.link/images/${randTemplateUrl}/`;
 
-    setFinalMeme(
-      <img
-        src={`${templateUrl}${encode(topText.split(''))}/${encode(bottomText.split(''))}.jpg`}
-        alt="Your Meme"
-        className="border border-pink-400"
-      />,
-    );
-    setTopText('');
-    setBottomText('');
+    setTimeout(() => {
+      setFinalMeme(
+        <img
+          src={`${templateUrl}${encode(topText.split(''))}/${encode(bottomText.split(''))}.jpg`}
+          alt="Your Meme"
+          className="border border-pink-400"
+        />,
+      );
+      setTopText('');
+      setBottomText('');
+      setLoading(false);
+    }, 2000);
   };
 
   return (
     <MemeGen
-      generateMeme={generateMeme}
-      setTopText={setTopText}
-      setBottomText={setBottomText}
       topText={topText}
       bottomText={bottomText}
       finalMeme={finalMeme}
+      loading={loading}
+      setTopText={setTopText}
+      setBottomText={setBottomText}
+      generateMeme={generateMeme}
+      setLoading={setLoading}
     />
   );
 }

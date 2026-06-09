@@ -1,6 +1,6 @@
 export function Home() {
   return (
-    <div className="w-[95%] md:w-[80%] lg:w-[60%] mx-auto mb-5 mt-10 px-8 pt-6 pb-8 flex flex-col border-[3px] border-sky-400 hover:border-yellow-300 bg-black text-gray-300 transition-colors duration-200 cursor-default">
+    <div className="w-[95%] md:w-[80%] lg:w-[60%] mx-auto mb-5 mt-10 px-8 pt-6 pb-8 flex flex-col border-[3px] border-sky-400 hover:border-yellow-300 bg-black/75 text-gray-300 transition-colors duration-200 cursor-default">
       <h1 className="text-4xl font-medium text-sky-400 mb-3">
         Meme Generator & Character Search
       </h1>

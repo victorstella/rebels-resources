@@ -15,7 +15,7 @@ export function StarWarsChar({
   searchChar,
 }: StarWarsCharProps) {
   return (
-    <div className="w-[95%] md:w-[80%] lg:w-[60%] mx-auto mt-5 mb-12 py-8 px-10 flex flex-col border-[3px] border-cyan-400 hover:border-fuchsia-500 bg-black transition-colors duration-200">
+    <div className="w-[95%] md:w-[80%] lg:w-[60%] mx-auto mt-5 mb-12 py-8 px-10 flex flex-col border-[3px] border-cyan-400 hover:border-fuchsia-500 bg-black/75 transition-colors duration-200">
       <div className="grid grid-cols-2 gap-4 items-center">
         <img
           src={SWLogo}
