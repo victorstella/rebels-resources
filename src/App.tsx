@@ -1,4 +1,5 @@
 import './global.css';
+import { Analytics } from '@vercel/analytics/react';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import MemeGenContainer from './components/MemeGen/MemeGenContainer';
@@ -17,6 +18,7 @@ export default function App() {
           <StarWarsCharContainer />
         </div>
       </div>
+      <Analytics />
     </div>
   );
 }

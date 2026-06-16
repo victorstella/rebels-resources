@@ -1,5 +1,5 @@
 import { SWChar } from './types';
-import SWLogo from '/Star-Wars.png';
+import SWLogo from '/star-wars.png';
 
 type StarWarsCharProps = {
   SWChar: SWChar;
